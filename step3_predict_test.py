@@ -6,18 +6,15 @@ from sklearn.ensemble import RandomForestClassifier
 train_df = pd.read_csv("data/train.csv")
 test_df = pd.read_csv("data/test.csv")
 
-# Combine for consistent preprocessing
 combined = pd.concat(
     [train_df.drop('Loan_Status', axis=1), test_df],
     ignore_index=True
 )
 
-# ---- CLEANING (NO WARNINGS) ----
 combined['LoanAmount'] = combined['LoanAmount'].fillna(combined['LoanAmount'].median())
 combined['Credit_History'] = combined['Credit_History'].fillna(combined['Credit_History'].mode()[0])
 combined = combined.ffill()
 
-# ---- ENCODING ----
 le = LabelEncoder()
 for col in combined.select_dtypes(include='object'):
     combined[col] = le.fit_transform(combined[col])
