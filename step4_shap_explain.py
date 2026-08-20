@@ -41,6 +41,5 @@ plt.show()
 shap.plots.bar(shap_values_class1)
 plt.show()
 
-# -------- Local explanation (first test sample) --------
 shap.plots.waterfall(shap_values_class1[0])
 plt.show()
