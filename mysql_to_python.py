@@ -5,7 +5,7 @@ import pandas as pd
 conn = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="@Siddhi20",   # 👈 put your MySQL password here
+    password="@Siddhi20", 
     database="loan_approval_db"
 )
 
@@ -17,6 +17,6 @@ df = pd.read_sql(query, conn)
 
 conn.close()
 
-print("✅ Data loaded successfully from MySQL")
+print("Data loaded successfully from MySQL")
 print(df.head())
 print("\nShape:", df.shape)
